@@ -11,8 +11,11 @@
     "package.json"
   ],
   "scripts": {
-    "test": "NODE_ENV=test mocha --compilers js:babel/register --recursive",
     "compile": "babel --modules umd -d lib/ src/",
+    "lint": "eslint src test",
+    "prepublish": "npm run compile",
+    "test": "NODE_ENV=test mocha --compilers js:babel/register --recursive",
+    "test:cov": "babel-node ./node_modules/.bin/isparta cover ./node_modules/.bin/_mocha -- --recursive"
   },
   "repository": {
     "type": "git",
